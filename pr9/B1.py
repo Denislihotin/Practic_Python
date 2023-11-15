@@ -8,9 +8,11 @@ for i in range(m):
         b.append(int(input()))
     a.append(b)
 def maximum():
+    max = 0
     for i in range(m):
         for j in range(n):
-            if a[i][j]<a[i+1][j]:
-                return a[i+1][j]
+            if a[i][j]>max:
+                max = a[i][j]
+    return max
 print(maximum())
 print(a)
