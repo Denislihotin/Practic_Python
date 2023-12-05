@@ -1,6 +1,7 @@
 import tkinter as tk
 from tkinter import ttk
 from tkinter import messagebox as mbox
+from tkinter import filedialog as fd
 
 
 def equally():
@@ -106,5 +107,30 @@ btn3.grid(row=2)
 
 btni = ttk.Button(tab2, text='show', command=show)
 btni.grid(row=3)
+
+
+def open_file():
+    filepath = fd.askopenfilename()
+    if filepath != "":
+        with open(filepath, "r") as file:
+            text = file.read()
+            text_editor.delete("1.0", "end")
+            text_editor.insert("1.0", text)
+
+
+def save_file():
+    filepath = fd.asksaveasfilename()
+    if filepath != "":
+        text = text_editor.get("1.0", "end")
+        with open(filepath, "w") as file:
+            file.write(text)
+
+
+text_editor = tk.Text(tab3)
+text_editor.grid(column=0, columnspan=2, row=1)
+open_button = ttk.Button(tab3, text="Открыть файл", command=open_file)
+open_button.grid(column=0, row=0, sticky='nsew', padx=10)
+save_button = ttk.Button(tab3, text="Сохранить файл", command=save_file)
+save_button.grid(column=1, row=0, sticky='nsew', padx=10)
 
 root.mainloop()
