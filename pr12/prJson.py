@@ -11,17 +11,17 @@ def information():
     response_new = {}
     for i in keys:
         response_new[i] = response[i]
-    with open('information.txt', 'w') as file:
+    with open('info.txt', 'w') as file:
         json.dump(response_new, file, indent=3)
 
 
 window = Tk()
-window.title('Поиск репозитория')
+window.title('information')
 window.geometry('355x400')
-lbl = Label(window, text='Введите название репозитория', width=30, height=1, font=45)
+lbl = Label(window, text='name', width=30, height=1, font=45)
 lbl.grid(row=0, column=1, padx=10)
 text = Entry(window, width=20)
 text.grid(column=1, row=1, pady=20)
-button = Button(window, text='Получить информацию', width=30, height=1, command=information)
+button = Button(window, text='show info', width=30, height=1, command=information)
 button.grid(row=3, column=1, pady=20)
 window.mainloop()
